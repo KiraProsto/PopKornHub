@@ -1,10 +1,13 @@
 import  {useEffect, useState } from 'react';
 import { getMoviesByCategory } from '../../api/movies';
+import Carousel from '../../components/Carousel/Carousel';
+import MovieCard from '../../components/MovieCard/MovieCard';
+import type { Movie } from '../../types/Movie';
 
 export default function Home(){
-    const [popular, setPopular] =useState([]);
-    const [topRated, setTopRated] = useState([]);
-    const [upcoming, setUpcoming] = useState([]);
+    const [popular, setPopular] = useState<Movie[]>([]);
+    const [topRated, setTopRated] = useState<Movie[]>([]);
+    const [upcoming, setUpcoming] = useState<Movie[]>([]);
 
     useEffect(() =>{
         async function loadMovies() {
@@ -22,32 +25,23 @@ export default function Home(){
 
     return(
         <div>
-            <h1>Популярные</h1>
-            <ul>
-                {popular.map((movie: any) => (
-                    <li key = {movie.id}>
-                        {movie.title}
-                    </li>
+            <Carousel title='Популярные ❯'>
+                {popular.map(movie => (
+                    <MovieCard key = {movie.id} movie = {movie}/>
                 ))}
-            </ul>
+            </Carousel>
 
-            <h1>Топ рейтинга</h1>
-            <ul>
-                {topRated.map((movie: any) => (
-                    <li key = {movie.id}>
-                        {movie.title}
-                    </li>
+            <Carousel title = 'Топ рейтинга ❯'>
+                {topRated.map(movie => (
+                    <MovieCard key = {movie.id} movie = {movie}/>
                 ))}
-            </ul>
+            </Carousel>
 
-            <h1>Скоро в эфире!</h1>
-            <ul>
-                {upcoming.map((movie: any) => (
-                    <li key = {movie.id}>
-                        {movie.title}
-                    </li>
+            <Carousel title='Скоро в эфире! ❯'>
+                {upcoming.map(movie => (
+                    <MovieCard key = {movie.id} movie = {movie}/>
                 ))}
-            </ul>
+            </Carousel>
         </div>
     )
 }
