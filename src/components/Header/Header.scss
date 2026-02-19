@@ -11,17 +11,17 @@ $white: #fff;
     color: $white;
 }
 
-.logo{
+.header__logo{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.image{
+.header__image{
     width: 40px;
 }
 
-.title{
+.header__title{
     font-size: 32px;
 
     &::after{
@@ -30,12 +30,12 @@ $white: #fff;
     }
 }
 
-.nav{
+.header__nav{
     display: flex;
     gap: 20px;
 }
 
-.link{
+.header__link{
     color: $white;
     text-decoration: none;
     font-size: 16px;

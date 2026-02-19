@@ -3,7 +3,7 @@ import { getMoviesByCategory } from '../../api/movies';
 import Carousel from '../../components/Carousel/Carousel';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import type { Movie } from '../../types/Movie';
-import styles from './Home.module.scss'
+import './Home.scss'
 
 export default function Home(){
     const [popular, setPopular] = useState<Movie[]>([]);
@@ -25,13 +25,13 @@ export default function Home(){
     }, []); 
 
     return(
-        <div className={styles.home}>
-            <section className={styles.intro}>
-                <h1 className={styles.title}>
+        <div className="home">
+            <section className="home__intro">
+                <h1 className="home__title">
                     Рады вас видеть в PopKornHub
                 </h1>
 
-                <p className={styles.subtitle}>
+                <p className="home__subtitle">
                     PopKornHub — это площадка, где ты можешь открывать новые фильмы, <br/>
                     смотреть рейтинги, изучать детали, добавлять любимые картины в избранное <br/>
                     и следить за новинками киноиндустрии.
