@@ -3,6 +3,7 @@ import { getMoviesByCategory } from '../../api/movies';
 import Carousel from '../../components/Carousel/Carousel';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import type { Movie } from '../../types/Movie';
+import styles from './Home.module.scss'
 
 export default function Home(){
     const [popular, setPopular] = useState<Movie[]>([]);
@@ -24,7 +25,19 @@ export default function Home(){
     }, []); 
 
     return(
-        <div>
+        <div className={styles.home}>
+            <section className={styles.intro}>
+                <h1 className={styles.title}>
+                    Рады вас видеть в PopKornHub
+                </h1>
+
+                <p className={styles.subtitle}>
+                    PopKornHub — это площадка, где ты можешь открывать новые фильмы, <br/>
+                    смотреть рейтинги, изучать детали, добавлять любимые картины в избранное <br/>
+                    и следить за новинками киноиндустрии.
+                </p>
+            </section>
+
             <Carousel title='Популярные ❯'>
                 {popular.map(movie => (
                     <MovieCard key = {movie.id} movie = {movie}/>
