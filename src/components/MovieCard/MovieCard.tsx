@@ -1,5 +1,6 @@
 import './MovieCard.scss'
 import type { Movie } from '../../types/Movie';
+import { Link } from 'react-router-dom';
 
 export default function MovieCard({ movie }: { movie: Movie}){
     const imageURL = movie.poster_path 
@@ -7,11 +8,12 @@ export default function MovieCard({ movie }: { movie: Movie}){
         : "/no-image.png";
 
     return(
-        <div className="movie-card">
+        <Link to = {`/movie/${movie.id}`} state = {{category: movie.category}} className="movie-card"> 
             <img src={imageURL} alt={movie.title} className="movie-card__image"/>
             <div className="movie-card__title">
                 {movie.title}
             </div>
-        </div>
+        </Link>
+            
     )
 }
