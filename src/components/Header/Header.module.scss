@@ -1,0 +1,47 @@
+$black: #000;
+$orange: #ff7a00;
+$white: #fff;
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 10px 10px;
+    background-color: $black;
+    color: $white;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.image{
+    width: 40px;
+}
+
+.title{
+    font-size: 32px;
+
+    &::after{
+        content: "Hub";
+        color: $orange;
+    }
+}
+
+.nav{
+    display: flex;
+    gap: 20px;
+}
+
+.link{
+    color: $white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+
+    &:hover{
+        color: $orange;
+    }
+}
