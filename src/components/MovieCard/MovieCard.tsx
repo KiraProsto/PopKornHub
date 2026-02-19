@@ -1,4 +1,4 @@
-import styles from './MovieCard.module.scss'
+import './MovieCard.scss'
 import type { Movie } from '../../types/Movie';
 
 export default function MovieCard({ movie }: { movie: Movie}){
@@ -7,9 +7,9 @@ export default function MovieCard({ movie }: { movie: Movie}){
         : "/no-image.png";
 
     return(
-        <div className={styles.card}>
-            <img src={imageURL} alt={movie.title} className={styles.image}/>
-            <div className={styles.title}>
+        <div className='movie-card'>
+            <img src={imageURL} alt={movie.title} className='movie-card__image'/>
+            <div className='movie-card__title'>
                 {movie.title}
             </div>
         </div>

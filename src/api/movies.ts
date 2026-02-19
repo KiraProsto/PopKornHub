@@ -5,7 +5,10 @@ export async function getMoviesByCategory(category: string) {
     const url = `${BASE_URL}/movie/${category}?api_key=${API_KEY}&language=ru-RU`;    
     const response = await fetch(url);
     const data = await response.json();
-    return data.results;
+    return data.results.map((movie: any)=> ({
+        ...movie,
+        category
+    }));
 }   
 
 export async function getMovieDetails(id:string) {
