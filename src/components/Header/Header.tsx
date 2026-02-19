@@ -1,21 +1,21 @@
 import {Link} from "react-router-dom";
-import styles from './Header.module.scss'
+import './Header.scss'
 
 export default function Header(){
     return(
-        <header className={styles.header}>
-            <div className={styles.logo}>
-                <img src="/popkorn.svg" alt="PopKornHub" className={styles.image} />
-                <h1 className={styles.title}>
+        <header className="header">
+            <div className="header__logo">
+                <img src="/popkorn.svg" alt="PopKornHub" className="header__image" />
+                <h1 className="header__title">
                     PopKorn
                 </h1>
             </div>
 
-            <nav className={styles.nav}>
-                <Link to="/" className={styles.link}>
+            <nav className="header__nav">
+                <Link to="/" className="header__link">
                     Home
                 </Link>
-                <Link to="/favorites" className={styles.link}>
+                <Link to="/favorites" className="header__link">
                     Favorites
                 </Link>
             </nav>

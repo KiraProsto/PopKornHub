@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import styles from './Carousel.module.scss'
+import './Carousel.scss'
 
 export default function Carousel({title, children}: {title: string; children: React.ReactNode}) {
     const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -23,19 +23,19 @@ export default function Carousel({title, children}: {title: string; children: Re
     }
 
     return (
-        <div className={styles.carousel}>
-            <h2 className={styles.title}>{title}</h2>
+        <div className="carousel">
+            <h2 className="carousel__title">{title}</h2>
 
-            <div className={styles.wrapper}>
-                <button onClick={scrollLeft} className={`${styles.arrow} ${styles.left}`}>
+            <div className="carousel__wrapper">
+                <button onClick={scrollLeft} className='carousel__arrow carousel__arrow-left'>
                     {"<"}
                 </button>
 
-                <div ref = {scrollRef} className={styles.track}>
+                <div ref = {scrollRef} className="carousel__track">
                     {children}
                 </div>
 
-                <button onClick={scrollRight} className={`${styles.arrow} ${styles.right}`}>
+                <button onClick={scrollRight} className="carousel__arrow carousel__arrow-right">
                     {">"}
                 </button>
             </div>
