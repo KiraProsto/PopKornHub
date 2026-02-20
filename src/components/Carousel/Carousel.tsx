@@ -27,16 +27,24 @@ export default function Carousel({title, children}: {title: string; children: Re
             <h2 className={styles.title}>{title}</h2>
 
             <div className={styles.wrapper}>
-                <button onClick={scrollLeft} className={`${styles.arrow} ${styles.left}`}>
-                    {"<"}
+                <button type = "button" 
+                    onClick={scrollLeft} 
+                    className={`${styles.arrow} ${styles.left}`} 
+                    aria-label='Прокрутить влево'
+                >
+                    <span aria-hidden="true">{"<"}</span>
                 </button>
 
                 <div ref = {scrollRef} className={styles.track}>
                     {children}
                 </div>
 
-                <button onClick={scrollRight} className={`${styles.arrow} ${styles.right}`}>
-                    {">"}
+                <button type = "button" 
+                    onClick={scrollRight} 
+                    className={`${styles.arrow} ${styles.right}`}
+                    aria-label='Прокрутить вправо'
+                >
+                    <span aria-hidden="true">{">"}</span>
                 </button>
             </div>
 

@@ -4,7 +4,7 @@ import type { Movie } from '../../types/Movie';
 export default function MovieCard({ movie }: { movie: Movie}){
     const imageURL = movie.poster_path 
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-        : "/no-image.png";
+        : "/favicon.png";
 
     return(
         <div className={styles.card}>
