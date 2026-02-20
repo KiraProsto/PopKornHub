@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Home from "../pages/Home/Home";
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import Favorites from '../pages/Favorites/Favorites';
@@ -7,7 +7,7 @@ import Footer from '../components/Footer/Footer';
 
 export default function Router() {
     return(
-        <BrowserRouter>
+        <>
             <Header/>
             <main>
                 <Routes>
@@ -17,6 +17,6 @@ export default function Router() {
                 </Routes>
             </main>
             <Footer/>
-        </BrowserRouter>
+        </>
     )
 }
