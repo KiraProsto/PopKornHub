@@ -8,7 +8,7 @@ export default function MovieCard({ movie }: { movie: Movie}){
 
     return(
         <div className={styles.card}>
-            <img src={imageURL} alt={movie.title} className={styles.image}/>
+            <img src={imageURL} alt={`Постер фильма ${movie.title}`} className={styles.image}/>
             <div className={styles.title}>
                 {movie.title}
             </div>

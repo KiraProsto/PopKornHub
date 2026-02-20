@@ -5,7 +5,7 @@ export default function Header(){
     return(
         <header className={styles.header}>
             <div className={styles.logo}>
-                <img src="/popkorn.svg" alt="PopKornHub" className={styles.image} />
+                <img src="/popkorn.svg" alt="Логотип PopKornHub" className={styles.image} />
                 <h1 className={styles.title}>
                     PopKorn
                 </h1>
