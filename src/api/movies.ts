@@ -6,7 +6,7 @@ if (!API_KEY) {
         "TMDB API key is missing. Please set VITE_TMDB_API_KEY in your .env file." 
     ); 
 }
-const BASE_URL = 'https://api.themoviedb.org/3';
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
 export async function getMoviesByCategory(category: string) {
     const url = `${BASE_URL}/movie/${category}?api_key=${API_KEY}&language=ru-RU`;    
