@@ -28,7 +28,7 @@ export default function Carousel({title, children}: {title: string; children: Re
 
             <div className="carousel__wrapper">
                 <button 
-                    type = "button" 
+                    type="button" 
                     aria-label='Прокрутить влево'
                     onClick={scrollLeft} 
                     className='carousel__arrow carousel__arrow-left'
@@ -37,16 +37,16 @@ export default function Carousel({title, children}: {title: string; children: Re
                 </button>
 
                 <div 
-                    ref = {scrollRef} 
+                    ref={scrollRef} 
                     className="carousel__track"
-                    role = "region"
+                    role="region"
                     aria-label={`Секция: ${title}`}
                 >
                     {children}
                 </div>
 
                 <button 
-                    type = "button" 
+                    type="button" 
                     aria-label='Прокрутить вправо'
                     onClick={scrollRight} 
                     className="carousel__arrow carousel__arrow-right"

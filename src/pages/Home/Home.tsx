@@ -1,4 +1,4 @@
-import  {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getMoviesByCategory } from '../../api/movies';
 import Carousel from '../../components/Carousel/Carousel';
 import MovieCard from '../../components/MovieCard/MovieCard';
