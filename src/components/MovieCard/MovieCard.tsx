@@ -9,12 +9,12 @@ export default function MovieCard({ movie }: { movie: Movie}){
 
     return(
         <Link 
-            to = {`/movie/${movie.id}`} 
-            state = {{category: movie.category}} 
+            to={`/movie/${movie.id}`} 
+            state={{category: movie.category}} 
             className="movie-card"
             aria-label={`Открыть страницу фильма ${movie.title}`}
         > 
-            <img src={imageURL} alt={`Постер фильма ${movie.title}`} className="movie-card__image"/>
+            <img src={imageURL} alt={`Постер фильма ${movie.title}`} className="movie-card__image" />
             <div className="movie-card__title">
                 {movie.title}
             </div>

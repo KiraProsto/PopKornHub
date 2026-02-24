@@ -30,13 +30,13 @@ export default function Favorites(){
 
             <div className="favorites__grid">
                 {favorites.map((movie)=>(
-                    <div className="favorites__item" key={movie.id}>
+                    <div className="favorites__item" key={movie.id} >
                         <button
                             type="button"
                             className="favorites__remove"
                             aria-label={`Удалить фильм ${movie.title} из избранного`}
                             onClick={() => {
-                                const updated = favorites.filter((m) => m.id !== movie.id);
+                                const updated=favorites.filter((m) => m.id !== movie.id);
                                 setFavorites(updated);
                                 localStorage.setItem("favorites", JSON.stringify(updated));
                             }}

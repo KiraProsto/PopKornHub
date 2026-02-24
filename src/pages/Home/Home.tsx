@@ -51,19 +51,19 @@ export default function Home(){
 
             <Carousel title='Популярные ❯'>
                 {popular.map(movie => (
-                    <MovieCard key = {movie.id} movie = {movie}/>
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Carousel>
 
-            <Carousel title = 'Топ рейтинга ❯'>
+            <Carousel title='Топ рейтинга ❯'>
                 {topRated.map(movie => (
-                    <MovieCard key = {movie.id} movie = {movie}/>
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Carousel>
 
             <Carousel title='Скоро в эфире! ❯'>
                 {upcoming.map(movie => (
-                    <MovieCard key = {movie.id} movie = {movie}/>
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Carousel>
         </div>
