@@ -1,17 +1,14 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react";
+import { useFavoritesStore } from "../../store/favorites";
 import MovieCard from "../../components/MovieCard/MovieCard";
-import type {Movie} from "../../types/Movie"
-import './Favorites.scss'
+import './Favorites.scss';
 
 export default function Favorites(){
-    const[favorites, setFavorites] = useState<(Movie & { category?: string})[]>([]);
+    const favorites = useFavoritesStore((state) => state.favorites);
+    const loadFavorites = useFavoritesStore((state) => state.loadFavorites);
+    const removeFavorites = useFavoritesStore((state) => state.removeFavorites);
 
     useEffect(() => {
-        function loadFavorites(){
-            const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
-            setFavorites(favs);
-        }
-
         loadFavorites();
     }, []);
 
@@ -35,11 +32,7 @@ export default function Favorites(){
                             type="button"
                             className="favorites__remove"
                             aria-label={`Удалить фильм ${movie.title} из избранного`}
-                            onClick={() => {
-                                const updated=favorites.filter((m) => m.id !== movie.id);
-                                setFavorites(updated);
-                                localStorage.setItem("favorites", JSON.stringify(updated));
-                            }}
+                            onClick={() => removeFavorites(movie.id)}
                         >
                             ✕
                         </button>
