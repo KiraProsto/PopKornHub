@@ -1,6 +1,5 @@
-$black: #000;
-$orange: #ff7a00;
-$white: #fff;
+@use '../../styles/variables' as *;
+
 
 .carousel {
   margin-bottom: 40px;
