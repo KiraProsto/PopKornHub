@@ -10,17 +10,26 @@ export default function Home(){
     const [topRated, setTopRated] = useState<Movie[]>([]);
     const [upcoming, setUpcoming] = useState<Movie[]>([]);
 
+    const [error, setError] = useState<string | null>(null);
+    
     useEffect(() =>{
         async function loadMovies() {
-            const popularMovies = await getMoviesByCategory('popular');
-            const topRatedMovies = await getMoviesByCategory('top_rated');
-            const upcomingMovies = await getMoviesByCategory('upcoming');
-
-            setPopular(popularMovies);
-            setTopRated(topRatedMovies);
-            setUpcoming(upcomingMovies);
+            try {
+                const popularMovies = await getMoviesByCategory('popular');
+                const topRatedMovies = await getMoviesByCategory('top_rated');
+                const upcomingMovies = await getMoviesByCategory('upcoming');
+                setPopular(Array.isArray(popularMovies) ? popularMovies : []);
+                setTopRated(Array.isArray(topRatedMovies) ? topRatedMovies : []);
+                setUpcoming(Array.isArray(upcomingMovies) ? upcomingMovies : []);
+                setError(null);
+            } catch (err) {
+                console.error('Failed to load movies', err);
+                setPopular([]);
+                setTopRated([]);
+                setUpcoming([]);
+                setError('Failed to load movies');
+            }
         }
-
         loadMovies();
     }, []); 
 
@@ -37,6 +46,8 @@ export default function Home(){
                     и следить за новинками киноиндустрии.
                 </p>
             </section>
+
+            {error && <p className="home__error">{error}</p>}
 
             <Carousel title='Популярные ❯'>
                 {popular.map(movie => (
