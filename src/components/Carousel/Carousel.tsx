@@ -1,7 +1,7 @@
-import {useRef} from 'react';
+import {useRef, type ReactNode} from 'react';
 import './Carousel.scss'
 
-export default function Carousel({title, children}: {title: string; children: React.ReactNode}) {
+export default function Carousel({title, children}: {title: string; children: ReactNode}) {
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
     function scrollLeft(){
