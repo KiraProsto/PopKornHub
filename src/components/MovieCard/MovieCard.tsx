@@ -8,8 +8,13 @@ export default function MovieCard({ movie }: { movie: Movie}){
         : "/no-image.png";
 
     return(
-        <Link to = {`/movie/${movie.id}`} state = {{category: movie.category}} className="movie-card"> 
-            <img src={imageURL} alt={movie.title} className="movie-card__image"/>
+        <Link 
+            to = {`/movie/${movie.id}`} 
+            state = {{category: movie.category}} 
+            className="movie-card"
+            aria-label={`Открыть страницу фильма ${movie.title}`}
+        > 
+            <img src={imageURL} alt={`Постер фильма ${movie.title}`} className="movie-card__image"/>
             <div className="movie-card__title">
                 {movie.title}
             </div>

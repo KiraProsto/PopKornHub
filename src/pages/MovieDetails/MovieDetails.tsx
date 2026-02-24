@@ -61,13 +61,22 @@ export default function MovieDetails() {
                     {category}
                 </div>
 
-                <button className={`movie-details__button movie-details__button--${category}`} onClick={toggleFavorite} >
+                <button 
+                    type="button"
+                    aria-label={favorite?`Убрать фильм ${movie.title} из избранного`:`Добавить фильм ${movie.title} в избранное`}
+                    className={`movie-details__button movie-details__button--${category}`} 
+                    onClick={toggleFavorite} 
+                >
                     {favorite ? "Убрать из избранного" : "Добавить в избранное"}
                 </button>
             </div>
 
             <div className="movie-details__image-wrapper">
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="movie-details__poster" />
+                <img 
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                    alt={`Постер фильма ${movie.title}`}
+                    className="movie-details__poster" 
+                />
                 <div className="movie-details__gradient"></div>
             </div>
         </div>
