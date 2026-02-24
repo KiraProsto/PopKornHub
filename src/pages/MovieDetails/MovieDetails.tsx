@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import type { Movie } from "../../types/Movie";
-import { getMovieDetails } from "../../api/movies";
+import { getMovieDetails } from "../../requests/movies";
 import './MovieDetails.scss'
 
 interface IMovieLocationState {

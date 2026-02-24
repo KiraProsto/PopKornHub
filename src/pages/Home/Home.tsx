@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getMoviesByCategory } from '../../api/movies';
+import { getMoviesByCategory } from '../../requests/movies';
 import Carousel from '../../components/Carousel/Carousel';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import type { Movie } from '../../types/Movie';
@@ -15,12 +15,15 @@ export default function Home(){
     useEffect(() =>{
         async function loadMovies() {
             try {
-                const popularMovies = await getMoviesByCategory('popular');
-                const topRatedMovies = await getMoviesByCategory('top_rated');
-                const upcomingMovies = await getMoviesByCategory('upcoming');
-                setPopular(Array.isArray(popularMovies) ? popularMovies : []);
-                setTopRated(Array.isArray(topRatedMovies) ? topRatedMovies : []);
-                setUpcoming(Array.isArray(upcomingMovies) ? upcomingMovies : []);
+                const [popularMovies, topRatedMovies, upcomingMovies] = await Promise.all([
+                    getMoviesByCategory('popular'),
+                    getMoviesByCategory('top_rated'),
+                    getMoviesByCategory('upcoming')
+                ]);
+
+                setPopular(popularMovies);
+                setTopRated(topRatedMovies);
+                setUpcoming(upcomingMovies);
                 setError(null);
             } catch (err) {
                 console.error('Failed to load movies', err);
