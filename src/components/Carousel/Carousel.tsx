@@ -1,7 +1,7 @@
-import {useRef} from 'react';
+import {useRef, type ReactNode} from 'react';
 import './Carousel.scss'
 
-export default function Carousel({title, children}: {title: string; children: React.ReactNode}) {
+export default function Carousel({title, children}: {title: string; children: ReactNode}) {
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
     function scrollLeft(){
@@ -27,15 +27,30 @@ export default function Carousel({title, children}: {title: string; children: Re
             <h2 className="carousel__title">{title}</h2>
 
             <div className="carousel__wrapper">
-                <button onClick={scrollLeft} className='carousel__arrow carousel__arrow-left'>
+                <button 
+                    type="button" 
+                    aria-label='Прокрутить влево'
+                    onClick={scrollLeft} 
+                    className='carousel__arrow carousel__arrow-left'
+                >
                     {"<"}
                 </button>
 
-                <div ref = {scrollRef} className="carousel__track">
+                <div 
+                    ref={scrollRef} 
+                    className="carousel__track"
+                    role="region"
+                    aria-label={`Секция: ${title}`}
+                >
                     {children}
                 </div>
 
-                <button onClick={scrollRight} className="carousel__arrow carousel__arrow-right">
+                <button 
+                    type="button" 
+                    aria-label='Прокрутить вправо'
+                    onClick={scrollRight} 
+                    className="carousel__arrow carousel__arrow-right"
+                >
                     {">"}
                 </button>
             </div>

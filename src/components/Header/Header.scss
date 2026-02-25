@@ -1,6 +1,5 @@
-$black: #000;
-$orange: #ff7a00;
-$white: #fff;
+@use '../../styles/variables' as *;
+
 
 .header{
     display: flex;
@@ -15,6 +14,9 @@ $white: #fff;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
+    color: $white;
+    cursor: pointer;
 }
 
 .header__image{

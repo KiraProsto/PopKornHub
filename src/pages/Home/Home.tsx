@@ -1,5 +1,5 @@
-import  {useEffect, useState } from 'react';
-import { getMoviesByCategory } from '../../api/movies';
+import { useEffect, useState } from 'react';
+import { getMoviesByCategory } from '../../requests/movies';
 import Carousel from '../../components/Carousel/Carousel';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import type { Movie } from '../../types/Movie';
@@ -10,17 +10,29 @@ export default function Home(){
     const [topRated, setTopRated] = useState<Movie[]>([]);
     const [upcoming, setUpcoming] = useState<Movie[]>([]);
 
+    const [error, setError] = useState<string | null>(null);
+    
     useEffect(() =>{
         async function loadMovies() {
-            const popularMovies = await getMoviesByCategory('popular');
-            const topRatedMovies = await getMoviesByCategory('top_rated');
-            const upcomingMovies = await getMoviesByCategory('upcoming');
+            try {
+                const [popularMovies, topRatedMovies, upcomingMovies] = await Promise.all([
+                    getMoviesByCategory('popular'),
+                    getMoviesByCategory('top_rated'),
+                    getMoviesByCategory('upcoming')
+                ]);
 
-            setPopular(popularMovies);
-            setTopRated(topRatedMovies);
-            setUpcoming(upcomingMovies);
+                setPopular(popularMovies);
+                setTopRated(topRatedMovies);
+                setUpcoming(upcomingMovies);
+                setError(null);
+            } catch (err) {
+                console.error('Failed to load movies', err);
+                setPopular([]);
+                setTopRated([]);
+                setUpcoming([]);
+                setError('Failed to load movies');
+            }
         }
-
         loadMovies();
     }, []); 
 
@@ -38,21 +50,23 @@ export default function Home(){
                 </p>
             </section>
 
+            {error && <p className="home__error">{error}</p>}
+
             <Carousel title='Популярные ❯'>
                 {popular.map(movie => (
-                    <MovieCard key = {movie.id} movie = {movie}/>
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Carousel>
 
-            <Carousel title = 'Топ рейтинга ❯'>
+            <Carousel title='Топ рейтинга ❯'>
                 {topRated.map(movie => (
-                    <MovieCard key = {movie.id} movie = {movie}/>
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Carousel>
 
             <Carousel title='Скоро в эфире! ❯'>
                 {upcoming.map(movie => (
-                    <MovieCard key = {movie.id} movie = {movie}/>
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Carousel>
         </div>

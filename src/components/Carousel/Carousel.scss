@@ -1,6 +1,5 @@
-$black: #000;
-$orange: #ff7a00;
-$white: #fff;
+@use '../../styles/variables' as *;
+
 
 .carousel {
   margin-bottom: 40px;
@@ -23,6 +22,11 @@ $white: #fff;
   gap: 20px;
   padding: 10px 40px;
   scroll-behavior: smooth;
+
+  scrollbar-width: none; 
+  &::-webkit-scrollbar { 
+    display: none; 
+  }
 }
 
 .carousel__arrow {

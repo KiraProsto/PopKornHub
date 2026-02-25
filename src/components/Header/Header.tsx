@@ -4,14 +4,14 @@ import './Header.scss'
 export default function Header(){
     return(
         <header className="header">
-            <div className="header__logo">
-                <img src="/popkorn.svg" alt="PopKornHub" className="header__image" />
+            <Link to="/" className="header__logo">
+                <img src="/popkorn.svg" alt="Логотип PopKornHub" className="header__image" />
                 <h1 className="header__title">
                     PopKorn
                 </h1>
-            </div>
+            </Link>
 
-            <nav className="header__nav">
+            <nav className="header__nav" aria-label="Основная навигация">
                 <Link to="/" className="header__link">
                     Home
                 </Link>
