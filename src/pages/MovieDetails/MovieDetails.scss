@@ -1,0 +1,120 @@
+.movie-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  color: #fff;
+  min-height: 80vh;
+  gap: 40px;
+
+  &__content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+  }
+
+  &__overview {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  &__tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #3a3a3a;
+    color: #dcdcdc;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+
+    &__button {
+    padding: 12px 20px;
+    border-radius: 40px;
+    background: transparent;          
+    border: 2px solid currentColor;   
+    color: inherit;                  
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.25s ease;
+    width: fit-content;
+    font-weight: 600;
+
+        &:hover {
+        color: white;                    
+        }
+
+        &--popular { 
+            color: #ff3b3b; 
+            &:hover { 
+                background-color: #ff3b3b; 
+            } 
+        } 
+        
+        &--top_rated { 
+            color: #2b7cff; 
+            &:hover { 
+                background-color: #2b7cff; 
+            } 
+        } 
+        
+        &--upcoming { 
+            color: #00b894; 
+            &:hover { 
+                background-color: #00b894; 
+            } 
+        }
+    }
+
+
+    &__image-wrapper {
+        position: relative;
+        width: 350px;        
+        height: 500px;       
+        margin-left: auto;   
+        display: flex;
+    }
+
+    &__poster {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+
+  &__gradient {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to left, transparent, #000);
+    pointer-events: none;
+    border-radius: 12px;
+  }
+}
+
+.movie-details--popular {
+  font-family: "Arial Black", Impact, sans-serif;
+}
+
+.movie-details--top_rated {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.movie-details--upcoming {
+  font-family: "Courier New", Consolas, monospace;
+}

@@ -1,73 +1,159 @@
-# React + TypeScript + Vite
+<div align="center">
+  <img src="https://github.com/KiraProsto/PopKornHub/releases/download/assets-v1/PopKorn_TopBanner.png" alt="PopKornHub Banner Top" width="100%">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=160&color=custom_gradient=0:db3800,10:db3800,100:db3800&text=PopKornHub&fontAlignY=40&fontColor=fff" />
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🍿🎬 PopKornHub
 
-Currently, two official plugins are available:
+## 📘 Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**PopKornHub** — это веб‑приложение для просмотра фильмов по категориям с возможностью открыть страницу фильма, изучить детали и добавить фильм в избранное.
+Проект реализован на **React + TypeScript**, использует Vite для сборки и **Express** для SSR (Server‑Side Rendering).
+Состояние избранного хранится в **Zustand**.
 
-## React Compiler
+Данные загружаются из открытого API **TheMovieDatabase (TMDB)**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📌 Основной функционал
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Главная страница
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Три карусели фильмов (разные категории)
+- Загрузка данных из TMDB
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Детальная страница фильма
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Описание
+- Постер с градиентом
+- Кнопка «Добавить в избранное»
+- Уникальные стили в зависимости от категории:
+  - шрифты
+  - цвета
+  - оформление
+
+### Избранное (Favorites)
+
+- Хранение состояния в Zustand (persist)
+- Отображение всех добавленных фильмов
+
+---
+
+## 🛠️ Используемые технологии
+
+| Категория | Технологии                |
+| --------- | ------------------------- |
+| Язык      | TypeScript                |
+| Фреймворк | React                     |
+| Сборка    | Vite                      |
+| SSR       | Express + Vite middleware |
+| Стили     | SCSS                      |
+| Роутинг   | React Router              |
+| API       | TMDB                      |
+| Состояние | Zustand                   |
+
+---
+
+## ⚙️ Архитектура проекта
+
+```
+project/
+│
+├── server/
+│   ├── index.js
+│   └── api/
+│
+├── src/
+│   ├── entry-client.tsx
+│   ├── entry-server.tsx
+│   ├── App.tsx
+│   ├── components/
+│   ├── pages/
+│   ├── store/
+│   ├── requests/
+│   ├── styles/
+│   └── router/
+│
+├── index.html
+├── package.json
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Установка и запуск
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Клонирование репозитория
+
+```bash
+git clone https://github.com/KiraProsto/PopKornHub.git
+cd PopKornHub
 ```
+
+### 2. Установка зависимостей
+
+```bash
+npm install
+```
+
+### 3. Настройка переменных окружения
+
+Создать файл `.env` в корне проекта:
+
+```
+VITE_TMDB_API_KEY=ВАШ_API_КЛЮЧ
+```
+
+Получить ключ: https://developer.themoviedb.org/
+
+### 4. Запуск в режиме разработки
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу:
+
+```
+http://localhost:5173
+```
+
+### 5. Сборка проекта
+
+```bash
+npm run build
+```
+
+### 6. Запуск собранной версии
+
+```bash
+npm run dev
+```
+
+---
+
+## 📈 Статус реализации
+
+### UI и функциональность
+
+- [x] Главная страница
+- [x] 3 карусели
+- [x] Детальная страница фильма
+- [x] Разные стили по категориям
+- [x] Favorites (Zustand)
+
+### Техническая часть
+
+- [x] React + TypeScript
+- [x] SCSS
+- [x] Vite
+- [x] SSR (Express + Vite middleware)
+- [x] Серверный рендер
+- [x] Гидратация
+- [x] Структурированная архитектура
+- [x] Zustand
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=110&color=custom_gradient=0:db3800,10:db3800,100:db3800&section=footer" alt="PopKornHub Capsule Footer"/>
+  <img src="https://github.com/KiraProsto/PopKornHub/releases/download/assets-v1/PopKorn_BottomBanner.png" alt="PopKornHub Banner Bottom" width="100%">
+</div>
